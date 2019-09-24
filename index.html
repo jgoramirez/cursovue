@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ORSoft Vue Tutorial</title>
+</head>
+<body>
+    <div id="app">
+        <h4>{{titulo}}</h4>
+
+
+        <div>
+            <span>Agregar nuevo item</span>
+            <input type="text" name="newItem" v-model="newItem" @keyup.enter="addItem" @keyup.esc="this.newItem=''">
+            <input type="button" value="Add Items" @click="addItem" >
+        </div>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Cantidad</th>
+                    <th>Producto</th>
+                    <th>Alert</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr v-for="item of items">
+                    <td><input type="number" name="cantidad" v-model.number="item.cantidad"></td>
+                    <td>{{item.nombre}}</td>
+                    <td><span v-if="item.cantidad === 0">No Stock</span></td>
+                    <td><input type="button" value="-" @click="item.cantidad === 0 ? 0 : item.cantidad -= 1"></td>
+                    <td><input type="button" value="+" @click="item.cantidad += 1"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <h4>Total Items: {{totalItemsF}}</h4>
+        </div>
+
+        <ul>
+            <li v-for="product of products">{{product}}</li>
+        </ul>
+    </div>
+
+    <a href="page1.html">Pagina 1</a>
+    <a href="crud.html">Gym CRUD</a>
+    <a href="computedBasic.html">5. Computed Basic</a>
+    <a href="componentes.html">7. Componentes</a>
+    <a href="comunicacionComponentes.html">8. Comunicación entre Componentes</a>
+    <a href="Introduccionvuex.html">10. Vuex</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
